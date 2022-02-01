@@ -1,0 +1,130 @@
+.template_4_table table th.thead{
+    background-color: #536279;
+    color: #fff;
+}
+
+.form_container{
+    width: calc(33.33% - 25px);
+    min-width: calc(33.33% - 25px);
+    margin-right: 50px;
+    background-color: #e0e9ee;
+}
+
+.form_container .formtitle {
+    background: #536279;
+    padding: 19px 10px;
+}
+
+.form__container form {
+    background: #e0e9ee;
+    padding-bottom: 15px;
+}
+
+.form_container .formtitle h3 {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+}
+
+.select{
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    background-color: #e0e9ee;
+    color: #536279;
+    font-size: 19px;
+    border: none;
+    margin-right: 21px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 5px;
+}
+
+.select-area{
+    padding: 20px  0 20px 20px;
+    background-color: #e0e9ee;
+}
+
+.select-area input[type="radio"]{
+    width: 18px;
+    height: 18px;
+    border: 1px solid #536279;
+    border-radius: 9px;
+}
+
+.select-area label{
+    padding: 5px 15px 5px 5px;
+    color: #536279;
+}
+
+.select-area input[type="radio"]:checked{
+    background-color: #536279;
+}
+
+.select-area input[type='number']{
+    margin: 0;
+    background: #e0e9ee;
+    width: 100%;
+    padding: 14px;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: #536279;
+}
+
+input[type="submit"] {
+    margin: 5px auto 30px;
+}
+
+.check-box{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.check-box label{
+    font-size: 18px;
+}
+
+.hide{
+    display: none;
+}
+
+.select-area p{
+    color: #536279;
+    font-size: 16px;
+}
+
+.form_container .formtitle-results {
+    background: white;
+    padding: 25px 10px;
+}
+
+.form_container .formtitle-results h3 {
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #536279;
+    text-align: center;
+}
+
+.subtitle{
+    background-color: white;
+    text-align: center;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    color: #536279;
+}
+
+.instructions{
+    line-height: 1.5;
+    color: #536279;
+    font-weight: 400;
+}
+
+.title-block h1{
+    padding-bottom: 15px;
+}
