@@ -1,46 +1,35 @@
-const SHEETS = {
-  4: [1250, 1500],
-  5: [1250, 1500],
-  6: [1500],
-  8: [1500, 2000],
-  10: [1500, 2000],
-  12: [1500, 2000],
-  14: [1500, 2000],
-  16: [1500, 2000],
-  18: [2000],
-  20: [1500, 2000],
-  22: [2000],
-  25: [1500, 2000],
-  30: [1500, 2000],
-  32: [2000],
-  36: [2000],
-  40: [2000],
+const beam_B = ["10Б1", "12Б1", "12Б2"];
+const beam_SH = ["20Ш0", "20Ш1", "20Ш2"];
+
+const Standarts = {
+  0: "Двотаври балочні (Б) по ГОСТ Р 57837-2017",
+  1: "Двотаври широкополичкові (Ш) по ГОСТ Р 57837-2017",
+};
+
+const Sortaments = {
+  0: beam_B,
+  1: beam_SH,
 };
 
 const form = document.getElementById("form");
 
 // Show thickness
-function showThickness() {
-  // let thicknessSelect = document.getElementById('thickness');
-  let thicknessSelect;
-  for (t in SHEETS) {
-    thicknessSelect += `<option value='${t}'>${t}</option>`;
+function showStandarts() {
+  let standartSelect;
+  for ([key, value] of Object.entries(Standarts)) {
+    standartSelect += `<option value='${key}'>${value}</option>`;
   }
-  document.getElementById("thickness").innerHTML = thicknessSelect;
+  document.getElementById("standart").innerHTML = standartSelect;
 }
 
 // Show available Width
-function availableWidth() {
-  let sheetWidthArray = SHEETS[document.getElementById("thickness").value];
-  let sheetWidth = "";
-  for (w of sheetWidthArray) {
-    if (sheetWidth == "") {
-      sheetWidth += `<input type="radio" id="${w}" value="${w}" name="sheet-width" checked> <label for="${w}">${w}</label>`;
-    } else {
-      sheetWidth += `<input type="radio" id="${w}" value="${w}" name="sheet-width"> <label for="${w}">${w}</label>`;
-    }
+function showSortament() {
+  let sortament = Sortaments[document.getElementById("standart").value];
+  let beamNumbers = "";
+  for (w of sortament) {
+    beamNumbers += `<option value='${w}'>${w}</option>`;
   }
-  document.getElementById("sheetWidth").innerHTML = sheetWidth;
+  document.getElementById("beamNumber").innerHTML = beamNumbers;
   hideResults();
 }
 
@@ -59,56 +48,13 @@ function hideResults() {
   }
 }
 
-function numberWithSpaces(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-}
-
-function numberWithComa(x) {
-  return x.toString().replace(".", ",");
-}
-
-function showCutOptions() {
-  document.getElementById("tor").parentElement.classList.toggle("hide");
-  document.getElementById("riz").parentElement.classList.toggle("hide");
-  document.getElementById("tor-title").classList.toggle("hide");
-  document.getElementById("riz-title").classList.toggle("hide");
-}
-
-function showDelta(delta, sheetWidth) {
-  let procent = numberWithComa(
-    Math.round((delta / sheetWidth) * 100 * 10 + Number.EPSILON) / 10
-  );
-  let deltaText = `${delta}мм (${procent}%)`;
-  return deltaText;
-}
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  let width = parseInt(document.getElementById("width").value);
-  let thickness = parseInt(document.getElementById("thickness").value);
-  let sheetWidth = parseInt(
-    document.querySelector('input[name="sheet-width"]:checked').value
-  );
-  let cutWidth = parseInt(document.getElementById("riz").value);
-  let endCutWidth = parseInt(document.getElementById("tor").value);
-
-  console.log(width);
-  console.log(thickness);
-  console.log(sheetWidth);
-  console.log(cutWidth);
-  console.log(endCutWidth);
-
-  let widthNew = sheetWidth - endCutWidth * 2;
-
-  let n = Math.floor((widthNew + cutWidth) / (width + cutWidth));
-
-  let delta = widthNew - n * width - (n - 1) * cutWidth;
-
-  document.getElementById("numberOfStrips").innerText = numberWithSpaces(n);
-  document.getElementById("waste").innerText = showDelta(delta, sheetWidth);
+  let standart = parseInt(document.getElementById("standart").value);
+  let beamNumber = parseInt(document.getElementById("beamNumber").value);
 
   showResults();
 });
 
-showThickness();
-availableWidth();
+showStandarts();
+showSortament();

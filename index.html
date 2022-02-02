@@ -92,7 +92,7 @@
             <h3>Виберіть сортамент</h3>
           </div>
           <div class="select-area">
-            <select name="standard" id="standard" class="select"></select>
+            <select name="standart" id="standart" class="select" onchange="showSortament()"></select>
           </div>
           <div class="formtitle">
             <h3>Виберіть номер прокату</h3>
@@ -104,34 +104,83 @@
           <input type="submit" class="btn-orange" value="Підібрати прокатний переріз" />
         </form>
 
-        <div class="results hide" id="results">
-          <div class="formtitle-results">
-            <h3>Результати розрахунку</h3>
-          </div>
-          <div class="formtitle">
-            <h3>Відхід</h3>
-          </div>
-          <div class="select-area">
-            <p id="waste"></p>
-          </div>
-          <div class="formtitle">
-            <h3>Кількість полос, шт</h3>
-          </div>
-          <div class="select-area">
-            <p id="numberOfStrips"></p>
-          </div>
-        </div>
+
+      </div>
+      <div class="imgcontainer">
+        <img src="static/img/beam.jpg" alt="beam" class="mainbeam">
       </div>
 
+
+      <div class="beam-parametrs-table">
+        <h2 class="subtitle">Марка: HB-360-162-6-12</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td class="firstcell">H</td>
+              <td>360</td>
+              <td>
+                <span class="symbol">+</span>
+              </td>
+              <td>
+                <span class="symbol"> - </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="firstcell">s</td>
+              <td>6</td>
+              <td>
+                <span class="symbol">+</span>
+              </td>
+              <td>
+                <span class="symbol"> - </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="firstcell">B</td>
+              <td>162</td>
+              <td>
+                <span class="symbol">+</span>
+              </td>
+              <td>
+                <span class="symbol"> - </span>
+              </td>
+            </tr>
+            <tr>
+              <td class="firstcell">t</td>
+              <td>12</td>
+              <td>
+                <span class="symbol">+</span>
+              </td>
+              <td>
+                <span class="symbol"> - </span>
+              </td>
+            </tr>
+
+
+
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="container-100">
       <div class="template_4_table">
         <div class="scroll-table">
-          <h2 class="subtitle">Таблиця полос з мінімальним відходом при розкрою листа</h2>
+          <h2 class="subtitle">Порівняння геометричних характеристик</h2>
           <table>
             <thead>
               <tr>
-                <th class="thead">Ефективна ширина полоси, мм</th>
-                <th class="thead">Ширина листа, мм</th>
-                <th class="thead">Кількість полос, шт</th>
+                <th class="thead">Марка</th>
+                <th class="thead">M (кг/м)</th>
+                <th class="thead">A (см <sup>2</sup> )</th>
+                <th class="thead">W<sub>x</sub> (см <sup>3</sup>)</th>
+                <th class="thead">I<sub>x</sub> (см <sup>4</sup>)</th>
+                <th class="thead">i<sub>x</sub> (см)</th>
+                <th class="thead">W<sub>y</sub> (см <sup>3</sup>)</th>
+                <th class="thead">I<sub>y</sub> (см <sup>4</sup>)</th>
+                <th class="thead">i<sub>y</sub> (см)</th>
               </tr>
             </thead>
             <tbody>
@@ -271,6 +320,7 @@
         </div>
       </div>
     </div>
+
   </section>
 </body>
 

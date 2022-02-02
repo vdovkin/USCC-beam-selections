@@ -128,3 +128,38 @@ input[type="submit"] {
 .title-block h1{
     padding-bottom: 15px;
 }
+
+.mainbeam{
+    max-width: 300px;
+}
+
+.imgcontainer{
+    margin: auto;
+}
+
+.symbol{
+    border: 1px solid #536279;
+    border-radius: 5px;
+    display: inline-flex;
+    padding: 0 6px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 2px;
+  }
+
+  .beam-parametrs-table table td.firstcell{
+      background-color: #536279;
+      color: #fff;
+  }
+
+  .beam-parametrs-table table td{
+      background-color: #fff;
+      min-width: 50px;
+      text-align: center;
+      height: 30px;
+  }
+
