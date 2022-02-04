@@ -74,10 +74,15 @@ function hideResults() {
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  let standart = parseInt(document.getElementById("standart").value);
-  let beamNumber = parseInt(document.getElementById("beamNumber").value);
-
+  const sortament = PROCAT[document.getElementById("standart").value];
+  const beamNumber = document.getElementById("beamNumber").value;
   const tableBody = document.getElementById("table-body");
+
+  const procatBeam = sortament.find((item) => {
+    return item["Марка"] == beamNumber;
+  });
+
+  alert(procatBeam["Марка"]);
 
   resultTable = "<tr><th>212</th></tr>";
 
