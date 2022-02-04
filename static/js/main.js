@@ -58,3 +58,10 @@ form.addEventListener("submit", function (e) {
 
 showStandarts();
 showSortament();
+showResults();
+
+const tableBody = document.getElementById("table-body");
+
+resultTable = "<tr><th>212</th></tr>";
+
+tableBody.innerHTML = resultTable;

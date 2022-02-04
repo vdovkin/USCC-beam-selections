@@ -180,7 +180,39 @@ input[type="submit"] {
 }
 
 .result-table{
-    display: flex;
     width: 100%;
+}
+
+
+
+.template_4_table .row-filter {
+    display: flex;
+}
+.template_4_table .scroll-table {
+    width: 100%;
+    overflow: auto hidden;
+}
+.template_4_table table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 480px;
+}
+.template_4_table table th {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #536279;
+    padding: 40px 30px;
+    background-color: #e0e9ee;
+    text-align: left;
+    border-bottom: 1px solid #fff;
+    white-space: nowrap;
+}
+.template_4_table table td {
+    font-size: 24px;
+    color: #536279;
+    font-weight: 300;
+    padding: 30px;
+    background-color: #e0e9ee;
+    border-bottom: 1px solid #fff;
 }
 
