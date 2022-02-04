@@ -1,15 +1,37 @@
-const beam_B = ["10Б1", "12Б1", "12Б2"];
-const beam_SH = ["20Ш0", "20Ш1", "20Ш2"];
-
 const Standarts = {
-  0: "Двотаври балочні (Б) по ГОСТ Р 57837-2017",
-  1: "Двотаври широкополичкові (Ш) по ГОСТ Р 57837-2017",
+  "GOST-B": "Двотаври балочні (Б)",
+  "GOST-K": "Двотаври колонні (К)",
+  "GOST-SH": "Двотаври широкополичкові (Ш)",
+  HEA: "Двотаври HEA",
+  HEB: "Двотаври HEB",
+  HEM: "Двотаври HEM",
+  IPE: "Двотаври IPE",
 };
 
-const Sortaments = {
-  0: beam_B,
-  1: beam_SH,
-};
+let PROCAT = {};
+
+// first start
+loadSortament((response) => {
+  PROCAT = JSON.parse(response);
+
+  showStandarts();
+  showSortament();
+});
+
+// Load sortaments
+function loadSortament(callback) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open("GET", "data/procat.json", true);
+
+  xhr.onload = function () {
+    if (this.status === 200) {
+      callback(this.responseText);
+    }
+  };
+
+  xhr.send();
+}
 
 const form = document.getElementById("form");
 
@@ -24,10 +46,12 @@ function showStandarts() {
 
 // Show available Width
 function showSortament() {
-  let sortament = Sortaments[document.getElementById("standart").value];
+  let sortament = PROCAT[document.getElementById("standart").value];
+  // alert(PROCAT[document.getElementById("standart").value]);
+
   let beamNumbers = "";
-  for (w of sortament) {
-    beamNumbers += `<option value='${w}'>${w}</option>`;
+  for (beam of sortament) {
+    beamNumbers += `<option value='${beam["Марка"]}'>${beam["Марка"]}</option>`;
   }
   document.getElementById("beamNumber").innerHTML = beamNumbers;
   hideResults();
@@ -53,15 +77,11 @@ form.addEventListener("submit", function (e) {
   let standart = parseInt(document.getElementById("standart").value);
   let beamNumber = parseInt(document.getElementById("beamNumber").value);
 
+  const tableBody = document.getElementById("table-body");
+
+  resultTable = "<tr><th>212</th></tr>";
+
+  tableBody.innerHTML = resultTable;
+
   showResults();
 });
-
-showStandarts();
-showSortament();
-showResults();
-
-const tableBody = document.getElementById("table-body");
-
-resultTable = "<tr><th>212</th></tr>";
-
-tableBody.innerHTML = resultTable;
