@@ -164,7 +164,7 @@ function findDiff(param1, param2) {
   let result = "";
   if (param1 > param2) {
     result = "+" + (Math.trunc((param1 - param2) * 100) / 100).toString();
-  } else {
+  } else if (param1 < param2) {
     result = (Math.trunc((param1 - param2) * 100) / 100).toString();
   }
   return result;
@@ -177,12 +177,30 @@ function findDiffPercent(param1, param2) {
       "+" +
       (Math.trunc(((param1 - param2) / param2) * 100 * 10) / 10).toString() +
       "%";
-  } else {
+  } else if (param1 < param2) {
     result =
       (Math.trunc(((param1 - param2) / param2) * 100 * 10) / 10).toString() +
       "%";
   }
   return result;
+}
+
+function findBeamsBasedOnHigh(beam) {
+  beam_height = Math.trunc(beam["H"] / 10) * 10;
+  if (beam_height < beam["H"]) {
+    beam_height_2 = beam_height + 10;
+  } else {
+    beam_height_2 = beam_height;
+  }
+  let beams = ZVARNI.filter(
+    (item) => (item["H"] >= beam_height) & (item["H"] <= beam_height_2)
+  );
+
+  beams = beams.filter(
+    (item) => (item["A"] >= beam["A"]) & (item["Wx"] >= beam["Wx"])
+  );
+
+  return beams;
 }
 
 form.addEventListener("submit", function (e) {
@@ -199,11 +217,19 @@ form.addEventListener("submit", function (e) {
 
   resultTable += beamParametersToTable(procatBeam);
 
-  resultTable += zvarnіBeamParametersToTable(ZVARNI[0], procatBeam);
-  resultTable += zvarnіBeamParametersToTable(ZVARNI[1], procatBeam);
-  resultTable += zvarnіBeamParametersToTable(ZVARNI[2], procatBeam);
-  resultTable += zvarnіBeamParametersToTable(ZVARNI[3], procatBeam);
-  resultTable += zvarnіBeamParametersToTable(ZVARNI[4], procatBeam);
+  let beams = findBeamsBasedOnHigh(procatBeam);
+
+  if (beams) {
+    for (beam of beams) {
+      resultTable += zvarnіBeamParametersToTable(beam, procatBeam);
+    }
+  }
+
+  // resultTable += zvarnіBeamParametersToTable(ZVARNI[0], procatBeam);
+  // resultTable += zvarnіBeamParametersToTable(ZVARNI[1], procatBeam);
+  // resultTable += zvarnіBeamParametersToTable(ZVARNI[2], procatBeam);
+  // resultTable += zvarnіBeamParametersToTable(ZVARNI[3], procatBeam);
+  // resultTable += zvarnіBeamParametersToTable(ZVARNI[4], procatBeam);
 
   tableBody.innerHTML = resultTable;
 
