@@ -1,4 +1,4 @@
-.template_4_table table th.thead{
+.result-table table th.thead{
     background-color: #536279;
     color: #fff;
 }
@@ -132,11 +132,12 @@ input[type="submit"] {
 }
 
 .mainbeam{
-    max-width: 300px;
+    width: 70%;
+    max-height: 550px;
 }
 
 .imgcontainer{
-    margin: auto;
+    text-align: center;
 }
 
 .symbol{
@@ -179,40 +180,42 @@ input[type="submit"] {
     margin-right: 60px;
 }
 
-.result-table{
+.center{
+    text-align: center;
+}
+
+
+.result-table {
     width: 100%;
 }
-
-
-
-.template_4_table .row-filter {
+.result-table .row-filter {
     display: flex;
 }
-.template_4_table .scroll-table {
+.result-table .scroll-table {
     width: 100%;
     overflow: auto hidden;
 }
-.template_4_table table {
+.result-table table {
     border-collapse: collapse;
     width: 100%;
     min-width: 480px;
 }
-.template_4_table table th {
-    font-size: 18px;
-    text-transform: uppercase;
+.result-table table th {
     color: #536279;
-    padding: 40px 30px;
-    background-color: #e0e9ee;
+    padding: 12px 5px;
+    background-color: #536279;
     text-align: left;
     border-bottom: 1px solid #fff;
     white-space: nowrap;
 }
-.template_4_table table td {
-    font-size: 24px;
+.result-table table td {
     color: #536279;
     font-weight: 300;
-    padding: 30px;
+    padding: 15px 3px;
     background-color: #e0e9ee;
     border-bottom: 1px solid #fff;
 }
 
+.result-table table td.diff{
+    color: #8a9499;
+}

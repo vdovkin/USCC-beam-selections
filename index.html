@@ -74,7 +74,9 @@
         <div class="title-block">
           <h1>Підбір зварної балки</h1>
           <h3 class="instructions">Сервіс дозволяє підібрати схожі до прокатних за характеристиками зварні балки</h3>
-          <h3 class="instructions">Позначення і характеристики зварних балок наведено в ДСТУ "Двотаври сталеві зварні"
+          <h3 class="instructions">Позначення і характеристики зварних балок наведено в <a
+              href="https://uscc.ua/dstu-khkhkhkhkh-dvotavri-stalevi-zvarni-tekhnichni-vimogi-ta-sortament">ДСТУ
+              Двотаври сталеві зварні. Технічні вимоги та сортамент</a>
           </h3>
         </div>
       </div>
@@ -98,7 +100,7 @@
             <h3>Виберіть номер прокату</h3>
           </div>
           <div class="select-area">
-            <select name="beamNumber" id="beamNumber" class="select"></select>
+            <select name="beamNumber" id="beamNumber" class="select" onchange="hideResults()"></select>
           </div>
 
           <input type="submit" class="btn-orange" value="Підібрати прокатний переріз" />
@@ -107,7 +109,7 @@
 
       </div>
       <div class="imgcontainer">
-        <img src="static/img/beam.jpg" alt="beam" class="mainbeam">
+        <img src="static/img/beam-img.jpg" alt="beam" class="mainbeam">
       </div>
 
 
@@ -115,7 +117,7 @@
     </div>
 
 
-    <div class="container-100 mt-2" id='results'>
+    <div class="container-100 mt-2 center" id='results'>
       <div class="result-table">
         <div class="scroll-table">
           <h2 class="subtitle">Порівняння геометричних характеристик</h2>
@@ -123,7 +125,6 @@
             <thead>
               <tr>
                 <th class="thead">Марка</th>
-                <th></th>
                 <th class="thead">H(мм)</th>
                 <th></th>
                 <th class="thead">h(мм)</th>
