@@ -200,6 +200,10 @@ function findBeamsBasedOnHigh(beam) {
     (item) => (item["A"] >= beam["A"]) & (item["Wx"] >= beam["Wx"])
   );
 
+  beams = beams.filter(
+    (item) => (item["A"] <= 1.5 * beam["A"]) & (item["Wx"] <= 1.5 * beam["Wx"])
+  );
+
   return beams;
 }
 
@@ -218,10 +222,22 @@ form.addEventListener("submit", function (e) {
   resultTable += beamParametersToTable(procatBeam);
 
   let beams = findBeamsBasedOnHigh(procatBeam);
+  let result = document.getElementById("recomended");
 
-  if (beams) {
+  if (Object.keys(beams).length === 0) {
+    result.innerHTML = `Переріз занадто малий для підбору зварної балки. Рекомендуємо використати прокатні двотаври по ДСТУ 8768:2018`;
+    let resTable = document.getElementById("resTable");
+    if (!resTable.classList.contains("hide")) {
+      resTable.classList.add("hide");
+    }
+  } else {
     for (beam of beams) {
+      result.innerHTML = `Рекомендуємий переріз - ${beams[0]["Марка"]}`;
       resultTable += zvarnіBeamParametersToTable(beam, procatBeam);
+      let resTable = document.getElementById("resTable");
+      if (resTable.classList.contains("hide")) {
+        resTable.classList.remove("hide");
+      }
     }
   }
 

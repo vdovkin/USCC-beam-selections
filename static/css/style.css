@@ -219,3 +219,8 @@ input[type="submit"] {
 .result-table table td.diff{
     color: #8a9499;
 }
+
+.recomended{
+    width: 100%;
+    color: #536279;
+}
